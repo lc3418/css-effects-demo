@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>div-turn-demo</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url("./img/deer.jpg") center/cover;
+        }
+
+        .main {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: 30%;
+        }
+
+        .main .front, .main .back {
+            position: absolute;
+            background: linear-gradient(25deg, #0c89cc, #8bd6f1);
+            box-shadow: 1px 1px 10px #014366, inset 0 0 100px #8bd6f1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: 1s linear;
+        }
+
+        .main .front {
+            z-index: 1;
+        }
+
+        .turn {
+            margin: 10px;
+            text-align: right;
+        }
+
+        .turn i {
+            font-weight: bold;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .main .back {
+            transform: rotateY(180deg);
+        }
+        .front.front-turn {
+            z-index: 0;
+            transform: rotateY(-180deg);
+        }
+
+        .back.back-turn {
+            transform: rotateY(0deg);
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1292411_bt3m2xb4kje.css">
+</head>
+<body>
+    <div class="main">
+        <div class="front">
+            <span class="turn">
+                <i class="iconfont icon-turn"></i>
+            </span>
+            <h1>Div-turn-demo</h2>
+            <h2>Front</h4>
+            <h3>Click the top right button to start</h3>
+        </div>
+
+        <div class="back">
+            <span class="turn">
+                <i class="iconfont icon-turn"></i>
+            </span>
+            <h1>Div-turn-demo</h2>
+            <h2>Back</h4>
+            <h3>Click the top right button to start</h3>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $($(".turn i").click(
+        () => {
+            $(".back").toggleClass("back-turn");
+            $(".front").toggleClass("front-turn");
+        }
+    ))
+</script>
+</html>
